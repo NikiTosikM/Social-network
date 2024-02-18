@@ -1,0 +1,23 @@
+{% extends 'User/register_login.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block form %}
+    <form action="{% url 'user:register' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.errors %}
+            {{ form.errors }}
+        {% endif %}
+        <h1>Register Form</h1>
+        {% for field in form %}
+            <div>
+                {{ field }}
+            </div>
+        {% endfor %}
+        <div>
+            <input type="submit" value="Register" />
+        </div>
+    </form>
+{% endblock %}
